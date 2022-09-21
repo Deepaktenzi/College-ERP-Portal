@@ -10,7 +10,18 @@ opts.secretOrKey = process.env.SECRET_KEY;
 module.exports = (passport) => {
   passport.use(
     new JwtStrategy(opts, async (jwt_payload, done) => {
-      console.log(jwt_payload);
+      const faculty = await Student.findById(jwt_payload.id);
+      const student = await Faculty.findById(jwt_payload.id);
+      const admin = await Admin.findById(jwt_payload.id);
+      if (faculty) {
+        return done(null, faculty);
+      } else if (student) {
+        return done(null, student);
+      } else if (admin) {
+        return done(null, admin);
+      } else {
+        console.log('Error');
+      }
     })
   );
 };

@@ -32,7 +32,7 @@ const studentSchema = new Schema({
     type: String,
   },
   aadharCard: {
-    type: Number,
+    type: String,
   },
   gender: {
     type: String,
