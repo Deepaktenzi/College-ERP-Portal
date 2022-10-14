@@ -20,9 +20,9 @@ router.post('/addFaculty', addFaculty);
 router.get('/getAllFaculty', getAllFaculty);
 
 router.post('/addSubject', addSubject);
-router.post('/getAllSubject', getAllSubject);
+router.get('/getAllSubject', getAllSubject);
 
 router.post('/addStudent', addStudent);
-router.post('/getAllStudents', getAllStudents);
+router.get('/getAllStudents', getAllStudents);
 
 module.exports = router;

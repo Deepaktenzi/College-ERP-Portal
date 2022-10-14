@@ -2,10 +2,13 @@ const express = require('express');
 const mongoose = require('mongoose');
 const adminRoutes = require('./routes/adminRoutes');
 const dotenv = require('dotenv');
+const cors = require('cors');
 const passport = require('passport');
 const app = express();
 app.use(express.json());
 dotenv.config({ path: './config/config.env' });
+
+app.use(cors());
 
 // MiddleWare //
 app.use(passport.initialize());

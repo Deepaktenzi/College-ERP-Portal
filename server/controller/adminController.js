@@ -9,9 +9,9 @@ const Faculty = require('../models/faculty');
 module.exports = {
   // Add New Admin //
   addAdmin: async (req, res) => {
-    const { name, email, password, dob, department } = req.body;
+    const { name, email, dob, department } = req.body;
 
-    if (!name || !email || !dob || !password || !department) {
+    if (!name || !email || !dob || !department) {
       res.status(400).json({ message: 'Fields Are Empty' });
     } else {
       const adminExist = await Admin.findOne({ email: email });
