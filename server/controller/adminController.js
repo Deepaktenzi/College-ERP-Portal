@@ -288,7 +288,7 @@ module.exports = {
   // Show Students //
   getAllStudents: async (req, res) => {
     try {
-      const { department, year } = req.body;
+      const { department, year } = req.query;
       const allStudents = await Student.find({ department, year });
       res.status(200).json({ result: allStudents });
     } catch (err) {
