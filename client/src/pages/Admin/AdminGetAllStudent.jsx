@@ -17,16 +17,12 @@ const AdminGetAllStudent = () => {
       .catch((err) => {
         console.log(err.response.status);
         console.log(err.response.data);
+        setIsLoading(false);
       });
     setStudents(data.result);
     setShow(true);
+    setIsLoading(false);
   };
-
-  useEffect(() => {
-    if (students.length !== 0) {
-      setIsLoading(false);
-    }
-  }, [students.length]);
 
   const showStudent = () => {
     if (!show) {

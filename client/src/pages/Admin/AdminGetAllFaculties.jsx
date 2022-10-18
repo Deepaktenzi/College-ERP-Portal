@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import AdminHome from '../../Components/AdminHome';
 import { MagnifyingGlass } from 'react-loader-spinner';
 import axios from 'axios';
-import { Navigate } from 'react-router-dom';
 function AdminGetAllFaculties() {
   const [isLoading, setIsLoading] = useState(false);
   const [department, setDepartment] = useState('');
@@ -19,16 +18,12 @@ function AdminGetAllFaculties() {
       .catch((err) => {
         console.log(err.response.status);
         console.log(err);
+        setIsLoading(false);
       });
     setFaculties(data.result);
     setShow(true);
+    setIsLoading(false);
   };
-
-  useEffect(() => {
-    if (faculties.length !== 0) {
-      setIsLoading(false);
-    }
-  }, [faculties.length]);
 
   return (
     <>

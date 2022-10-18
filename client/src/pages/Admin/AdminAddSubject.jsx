@@ -35,6 +35,13 @@ function AdminAddSubject() {
         if (res.status === 200) {
           window.alert('New Subject Added');
         }
+        setSubject({
+          totalLectures: '',
+          department: '',
+          subjectCode: '',
+          subjectName: '',
+          year: '',
+        });
       })
       .catch((err) => {
         window.alert(err.message);
