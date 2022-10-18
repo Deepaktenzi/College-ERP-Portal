@@ -4,6 +4,7 @@ import AdminHome from './Components/AdminHome';
 import AdminAddAdmin from './pages/Admin/AdminAddAdmin';
 import AdminGetAllFaculties from './pages/Admin/AdminGetAllFaculties';
 import AdminGetAllStudent from './pages/Admin/AdminGetAllStudent';
+import AdminGetAllSubject from './pages/Admin/AdminGetAllSubject';
 
 function App() {
   return (
@@ -20,6 +21,11 @@ function App() {
           exact
           path="/admin/allStudents"
           element={<AdminGetAllStudent />}
+        />
+        <Route
+          exact
+          path="/admin/allSubject"
+          element={<AdminGetAllSubject />}
         />
       </Routes>
     </>
