@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import AdminHome from '../Components/AdminHome';
+import AdminHome from '../../Components/AdminHome';
 import { MagnifyingGlass } from 'react-loader-spinner';
 import axios from 'axios';
 import { Navigate } from 'react-router-dom';

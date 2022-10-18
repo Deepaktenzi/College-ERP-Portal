@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import AdminHome from '../Components/AdminHome';
+import AdminHome from '../../Components/AdminHome';
 import axios from 'axios';
 
 const AdminAddAdmin = () => {

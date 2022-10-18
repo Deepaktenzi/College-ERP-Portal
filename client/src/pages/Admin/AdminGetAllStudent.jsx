@@ -1,5 +1,5 @@
 import react, { useState, useEffect } from 'react';
-import AdminHome from '../Components/AdminHome';
+import AdminHome from '../../Components/AdminHome';
 import axios from 'axios';
 import { MagnifyingGlass } from 'react-loader-spinner';
 const AdminGetAllStudent = () => {

@@ -336,7 +336,7 @@ module.exports = {
   // Show Subjects //
   getAllSubject: async (req, res) => {
     try {
-      const { department, year } = req.body;
+      const { department, year } = req.query;
       const allSubjects = await Subject.find({ department, year });
       res.status(200).json({ result: allSubjects });
     } catch (err) {
