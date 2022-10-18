@@ -36,6 +36,7 @@ function AdminGetAllFaculties() {
       <div className="container mt-5">
         <div className="row">
           <div className="col-sm-4">
+            <h4>Search For Faculties</h4>
             <div className="form-group">
               <label htmlFor="department">Department</label>
               <select

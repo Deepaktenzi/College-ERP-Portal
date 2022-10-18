@@ -5,6 +5,9 @@ import AdminAddAdmin from './pages/Admin/AdminAddAdmin';
 import AdminGetAllFaculties from './pages/Admin/AdminGetAllFaculties';
 import AdminGetAllStudent from './pages/Admin/AdminGetAllStudent';
 import AdminGetAllSubject from './pages/Admin/AdminGetAllSubject';
+import AdminAddSubject from './pages/Admin/AdminAddSubject';
+import AdminAddStudent from './pages/Admin/AdminAddStudent';
+import AdminAddFaculty from './pages/Admin/AdminAddFaculty';
 
 function App() {
   return (
@@ -27,6 +30,9 @@ function App() {
           path="/admin/allSubject"
           element={<AdminGetAllSubject />}
         />
+        <Route exact path="/admin/addStudent" element={<AdminAddStudent />} />
+        <Route exact path="/admin/addFaculty" element={<AdminAddFaculty />} />
+        <Route exact path="/admin/addSubject" element={<AdminAddSubject />} />
       </Routes>
     </>
   );

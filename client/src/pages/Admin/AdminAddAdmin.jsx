@@ -39,13 +39,13 @@ const AdminAddAdmin = () => {
         dob,
         contactNumber,
       })
-      .then((res) => res.status)
-      .catch((err) => {
-        if (err.response.status === 200) {
+      .then((res) => {
+        if (res.response.status === 200) {
           window.alert('New Admin Added');
-        } else {
-          window.alert(err.response.data.message);
         }
+      })
+      .catch((err) => {
+        window.alert(err.response.data.message);
       });
     console.log(res.status);
   };
