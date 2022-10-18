@@ -185,7 +185,7 @@ module.exports = {
 
   getAllFaculty: async (req, res) => {
     try {
-      const { department } = req.body;
+      const { department } = req.query;
       const allFaculty = await Faculty.find({ department });
       if (allFaculty.length === 0) {
         res.status(404).json({ message: 'Faculties Not Found' });

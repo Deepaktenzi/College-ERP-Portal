@@ -1,4 +1,4 @@
-import react, { useState } from 'react';
+import react, { useState, useEffect } from 'react';
 import AdminHome from '../Components/AdminHome';
 import axios from 'axios';
 import { MagnifyingGlass } from 'react-loader-spinner';
@@ -20,8 +20,13 @@ const AdminGetAllStudent = () => {
       });
     setStudents(data.result);
     setShow(true);
-    setIsLoading(false);
   };
+
+  useEffect(() => {
+    if (students.length !== 0) {
+      setIsLoading(false);
+    }
+  }, [students.length]);
 
   const showStudent = () => {
     if (!show) {
