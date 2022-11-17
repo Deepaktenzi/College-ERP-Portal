@@ -1,3 +1,22 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.container-fluid {
+  height: 100vh !important;
+  border: 2px solid red;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.login_main {
+  display: flex;
+  gap: 20px;
+}
+
 .App {
   text-align: center;
 }

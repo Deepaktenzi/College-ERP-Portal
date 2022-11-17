@@ -8,12 +8,14 @@ import AdminGetAllSubject from './pages/Admin/AdminGetAllSubject';
 import AdminAddSubject from './pages/Admin/AdminAddSubject';
 import AdminAddStudent from './pages/Admin/AdminAddStudent';
 import AdminAddFaculty from './pages/Admin/AdminAddFaculty';
+import FacultyStudentLoginPage from './pages/FacultyStudentLoginPage';
 
 function App() {
   return (
     <>
       <Routes>
-        <Route exact path="/" element={<AdminHome />} />
+        <Route exact path="/" element={<FacultyStudentLoginPage />} />
+        <Route exact path="/admin" element={<AdminHome />} />
         <Route exact path="/admin/addAdmin" element={<AdminAddAdmin />} />
         <Route
           exact
