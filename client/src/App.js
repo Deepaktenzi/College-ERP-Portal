@@ -9,6 +9,7 @@ import AdminAddSubject from './pages/Admin/AdminAddSubject';
 import AdminAddStudent from './pages/Admin/AdminAddStudent';
 import AdminAddFaculty from './pages/Admin/AdminAddFaculty';
 import FacultyStudentLoginPage from './pages/FacultyStudentLoginPage';
+import AdminLogin from './pages/AdminLogin';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<FacultyStudentLoginPage />} />
         <Route exact path="/admin" element={<AdminHome />} />
+        <Route exact path="/adminlogin" element={<AdminLogin />} />
         <Route exact path="/admin/addAdmin" element={<AdminAddAdmin />} />
         <Route
           exact

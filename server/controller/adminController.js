@@ -67,13 +67,19 @@ module.exports = {
   },
   // Admin Login
   addLogin: async (req, res) => {
+    console.log('This is server code');
     try {
       const { registrationNumber, password } = req.body;
+
+      if (!registrationNumber || !password) {
+        return res.status(400).json({ message: 'Plz fill required Fields' });
+      }
 
       const admin = await Admin.findOne({ registrationNumber });
 
       const isCorrect = await bcrypt.compare(password, admin.password);
 
+      console.log(admin);
       if (!isCorrect) {
         res.status(404).json({ error: 'Invalid Credentials' });
       }

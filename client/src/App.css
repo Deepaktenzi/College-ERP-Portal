@@ -4,13 +4,13 @@
   box-sizing: border-box;
 }
 
-.container-fluid {
-  height: 100vh !important;
+#main-div {
   border: 2px solid red;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  height: 100vh !important;
 }
 .login_main {
   display: flex;

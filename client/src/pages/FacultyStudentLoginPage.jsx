@@ -29,17 +29,6 @@ function FacultyStudentLoginPage() {
           </div>
         </div>
       </div>
-
-      {/* <div className="container-fluid d-flex justify-content-center">
-        <div className="row">
-          <div className="col-sm-4">
-            <h2>Faculty Login</h2>
-          </div>
-          <div className="col-sm-4">
-            <h2>Faculty Login</h2>
-          </div>
-        </div>
-      </div> */}
     </>
   );
 }
