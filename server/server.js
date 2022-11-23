@@ -4,12 +4,12 @@ const adminRoutes = require('./routes/adminRoutes');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const passport = require('passport');
+const cookieParser = require('cookie-parser');
 const app = express();
 app.use(express.json());
 dotenv.config({ path: './config/config.env' });
-
+app.use(cookieParser());
 app.use(cors());
-
 // MiddleWare //
 app.use(passport.initialize());
 

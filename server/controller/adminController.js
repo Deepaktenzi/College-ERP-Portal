@@ -67,7 +67,6 @@ module.exports = {
   },
   // Admin Login
   addLogin: async (req, res) => {
-    console.log('This is server code');
     try {
       const { registrationNumber, password } = req.body;
 
@@ -93,14 +92,13 @@ module.exports = {
         joiningYear: admin.joiningYear,
         department: admin.department,
       };
-      jwt.sign(
-        payload,
-        process.env.SECRET_KEY,
-        { expiresIn: 7200 },
-        (err, token) => {
-          res.json({ success: true, token: 'Bearer ' + token });
-        }
-      );
+      const token = jwt.sign(payload, process.env.SECRET_KEY);
+      res.status(200).json({ token: token });
+
+      res.cookie('JwtAdm', token, {
+        expires: new Date(Date.now() + 60000),
+        httpOnly: true,
+      });
     } catch (err) {
       console.log('Error in admin login', err.message);
     }

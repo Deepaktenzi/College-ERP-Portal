@@ -8,6 +8,7 @@ function AdminLogin() {
     registrationNumber: '',
     password: '',
   });
+  const [data, setData] = useState();
 
   const HandleInput = (e) => {
     let name = e.target.name;
@@ -19,7 +20,7 @@ function AdminLogin() {
     e.preventDefault();
     const { registrationNumber, password } = admin;
 
-    const resData = await axios
+    await axios
       .post(
         '/api/admin/login',
         {
@@ -27,6 +28,7 @@ function AdminLogin() {
           password,
         },
         {
+          withCredentials: true,
           headers: {
             'content-type': 'application/json',
           },
@@ -35,14 +37,11 @@ function AdminLogin() {
       .then((res) => {
         if (res.status === 200) {
           navigate('/admin');
-          return res.data;
         }
       })
       .catch((err) => {
         console.log(err);
       });
-
-    console.log(resData.token);
   };
 
   return (
@@ -50,7 +49,7 @@ function AdminLogin() {
       <div className="container-fluid" id="main-div">
         <div className="login_main">
           <div className="border-2 border border-danger p-2">
-            <h3>Admin Loin</h3>
+            <h3>{data}</h3>
             <form onSubmit={postData}>
               <label className="form-label">Admin id</label>
               <input
