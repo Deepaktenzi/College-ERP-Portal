@@ -1,22 +1,20 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const adminRoutes = require('./routes/adminRoutes');
+const facultyRoutes = require('./routes/facultyRoutes');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
+const auth = require('./middleware/auth');
 const app = express();
 app.use(express.json());
 dotenv.config({ path: './config/config.env' });
 app.use(cookieParser());
-app.use(cors());
-// MiddleWare //
-app.use(passport.initialize());
+app.use(cors({ origin: true, credentials: true }));
 
-require('./config/passport')(passport);
-// Routes //
 app.use('/api/admin', adminRoutes);
-
+app.use('/api/faculty', facultyRoutes);
 // Mongoose Connect//
 mongoose
   .connect(

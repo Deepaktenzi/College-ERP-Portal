@@ -1,97 +1,87 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Cookies from 'universal-cookie';
+import jwt_decode from 'jwt-decode';
+import Axios from 'axios';
+import AdminNavbar from './AdminNavbar';
+
+const cookies = new Cookies();
 
 function AdminHome() {
+  const navigate = useNavigate();
+  const [data, setData] = useState({});
+  const callhomePage = async () => {
+    const admin = await Axios.get('/api/admin/getdata')
+      .then((res) => setData(res.data))
+      .catch((err) => {
+        navigate('/adminlogin');
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    callhomePage();
+  }, []);
+
   return (
-    <div className="container-fluid">
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <h4 className="navbar-brand mt-1" href="">
-          SRM
-        </h4>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav">
-            <li className="nav-item active">
-              <button type="button" className="btn">
-                <Link to="/admin">
-                  <li>Admin Name</li>
-                </Link>
-              </button>
-            </li>
-            <li className="nav-item">
-              <button type="button" className="btn">
-                <Link to="/admin/addFaculty">
-                  <li>ADD FACULTY</li>
-                </Link>
-              </button>
-            </li>
-            <li className="nav-item">
-              <button type="button" className="btn">
-                <Link to="/admin/addStudent">
-                  <li>ADD STUDENT</li>
-                </Link>
-              </button>
-            </li>
-            <li className="nav-item">
-              <button type="button" className="btn">
-                <Link to="/admin/addSubject">
-                  <li>ADD SUBJECT</li>
-                </Link>
-              </button>
-            </li>
-            <li className="nav-item">
-              <button type="button" className="btn">
-                <Link to="/admin/addAdmin">
-                  <li>ADD ADMIN</li>
-                </Link>
-              </button>
-            </li>
-            <li className="nav-item">
-              <button type="button" className="btn">
-                <Link to="/admin/allFaculties">
-                  <li>OUR FACULTIES</li>
-                </Link>
-              </button>
-            </li>
-            <li className="nav-item">
-              <button type="button" className="btn">
-                <Link to="/admin/allStudents">
-                  <li>OUR STUDENTS</li>
-                </Link>
-              </button>
-            </li>
-            <li className="nav-item">
-              <button type="button" className="btn">
-                <Link to="/admin/allSubject">
-                  <li>SUBJECTS</li>
-                </Link>
-              </button>
-            </li>
-          </ul>
+    <>
+      <AdminNavbar />
+      <div className="container">
+        <div className="row mt-5">
+          <div className="col-2"></div>
+          <div className="col-8">
+            <div className="row">
+              <div className="col-md-5">
+                <div className="card" style={{ width: '18rem' }}>
+                  <img
+                    className="card-img-top"
+                    src={data.avatar}
+                    alt="Card image cap"
+                  />
+                  <div className="card-body">
+                    <h5 className="card-title">{data.name}</h5>
+                    <h5 className="card-title">{data.registrationNumber}</h5>
+                    {/* <Link to='/faculty/updateProfile'>UPDATE PROFILE</Link> */}
+                  </div>
+                </div>
+              </div>
+              <div className="col-md-7">
+                <table className="table border">
+                  <tbody>
+                    <tr>
+                      <td>Name</td>
+                      <td>{data.name}</td>
+                    </tr>
+                    <tr>
+                      <td>Email</td>
+                      <td>{data.email}</td>
+                    </tr>
+                    <tr>
+                      <td>Registration Number</td>
+                      <td>{data.registrationNumber}</td>
+                    </tr>
+                    <tr>
+                      <td>Joining Year</td>
+                      <td>{data.joiningYear}</td>
+                    </tr>
+                    <tr>
+                      <td>Department</td>
+                      <td>{data.department}</td>
+                    </tr>
+                    <tr>
+                      <td>Contact Number</td>
+                      <td>{data.contactNumber ? data.contactNumber : 'NA'}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div className="col-2"></div>
         </div>
-        <div>
-          <button
-            style={{ listStyle: 'None' }}
-            // onClick={logoutHandler}
-            type="button"
-            className="btn"
-          >
-            <li>LOGOUT</li>
-          </button>
-        </div>
-      </nav>
-    </div>
+      </div>
+    </>
   );
 }
 

@@ -8,7 +8,6 @@ function AdminLogin() {
     registrationNumber: '',
     password: '',
   });
-  const [data, setData] = useState();
 
   const HandleInput = (e) => {
     let name = e.target.name;
@@ -28,7 +27,6 @@ function AdminLogin() {
           password,
         },
         {
-          withCredentials: true,
           headers: {
             'content-type': 'application/json',
           },
@@ -40,7 +38,7 @@ function AdminLogin() {
         }
       })
       .catch((err) => {
-        console.log(err);
+        window.alert(err.response.data.error);
       });
   };
 
@@ -49,7 +47,7 @@ function AdminLogin() {
       <div className="container-fluid" id="main-div">
         <div className="login_main">
           <div className="border-2 border border-danger p-2">
-            <h3>{data}</h3>
+            <h3>Admin Login</h3>
             <form onSubmit={postData}>
               <label className="form-label">Admin id</label>
               <input

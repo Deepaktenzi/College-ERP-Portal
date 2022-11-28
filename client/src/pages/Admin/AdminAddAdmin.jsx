@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import AdminHome from '../../Components/AdminHome';
 import axios from 'axios';
+import AdminNavbar from '../../Components/AdminNavbar';
 
 const AdminAddAdmin = () => {
   const [user, setUser] = useState({
@@ -40,18 +41,17 @@ const AdminAddAdmin = () => {
         contactNumber,
       })
       .then((res) => {
-        if (res.response.status === 200) {
+        if (res.status === 200) {
           window.alert('New Admin Added');
         }
       })
       .catch((err) => {
-        window.alert(err.response.data.message);
+        window.alert(err);
       });
-    console.log(res.status);
   };
   return (
     <>
-      <AdminHome />
+      <AdminNavbar />
       <div className="container">
         <div className="w-50 m-auto mt-4">
           <form>

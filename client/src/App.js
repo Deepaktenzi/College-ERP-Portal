@@ -10,33 +10,25 @@ import AdminAddStudent from './pages/Admin/AdminAddStudent';
 import AdminAddFaculty from './pages/Admin/AdminAddFaculty';
 import FacultyStudentLoginPage from './pages/FacultyStudentLoginPage';
 import AdminLogin from './pages/AdminLogin';
+import { AdminLogout } from './pages/Admin/AdminLogout';
 
 function App() {
   return (
     <>
       <Routes>
-        <Route exact path="/" element={<FacultyStudentLoginPage />} />
-        <Route exact path="/admin" element={<AdminHome />} />
-        <Route exact path="/adminlogin" element={<AdminLogin />} />
-        <Route exact path="/admin/addAdmin" element={<AdminAddAdmin />} />
-        <Route
-          exact
-          path="/admin/allFaculties"
-          element={<AdminGetAllFaculties />}
-        />
-        <Route
-          exact
-          path="/admin/allStudents"
-          element={<AdminGetAllStudent />}
-        />
-        <Route
-          exact
-          path="/admin/allSubject"
-          element={<AdminGetAllSubject />}
-        />
-        <Route exact path="/admin/addStudent" element={<AdminAddStudent />} />
-        <Route exact path="/admin/addFaculty" element={<AdminAddFaculty />} />
-        <Route exact path="/admin/addSubject" element={<AdminAddSubject />} />
+        <Route path="/" element={<FacultyStudentLoginPage />} />
+        <Route path="/adminlogin" element={<AdminLogin />} />
+        <Route path="/admin">
+          <Route index element={<AdminHome />} />
+          <Route path="addAdmin" element={<AdminAddAdmin />} />
+          <Route path="allFaculties" element={<AdminGetAllFaculties />} />
+          <Route path="allStudents" element={<AdminGetAllStudent />} />
+          <Route path="allSubject" element={<AdminGetAllSubject />} />
+          <Route path="addFaculty" element={<AdminAddFaculty />} />
+          <Route path="addStudent" element={<AdminAddStudent />} />
+          <Route path="addSubject" element={<AdminAddSubject />} />
+          <Route path="logout" element={<AdminLogout />} />
+        </Route>
       </Routes>
     </>
   );

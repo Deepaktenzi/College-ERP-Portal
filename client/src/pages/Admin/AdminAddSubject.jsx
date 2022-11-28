@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import AdminHome from '../../Components/AdminHome';
+import AdminNavbar from '../../Components/AdminNavbar';
 
 function AdminAddSubject() {
   const [subject, setSubject] = useState({
@@ -51,7 +52,7 @@ function AdminAddSubject() {
   };
   return (
     <>
-      <AdminHome />
+      <AdminNavbar />
       <div className="cotainer">
         <div className="row justify-content-center">
           <div className="col-sm-3 m-3 ">

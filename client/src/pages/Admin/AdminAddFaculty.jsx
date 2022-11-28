@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import AdminHome from '../../Components/AdminHome';
+import AdminNavbar from '../../Components/AdminNavbar';
 
 const AdminAddFaculty = () => {
   const [faculty, setFaculty] = useState({
@@ -65,7 +66,7 @@ const AdminAddFaculty = () => {
 
   return (
     <>
-      <AdminHome />
+      <AdminNavbar />
       <div className="container">
         <div className="row justify-content-center">
           <h2 className="text-center mt-4">Add New Faculty</h2>

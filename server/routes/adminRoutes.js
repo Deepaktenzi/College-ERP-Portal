@@ -8,12 +8,17 @@ const {
   addFaculty,
   getAllSubject,
   getAllStudents,
+  getAdmin,
+  adminLogOut,
 } = require('../controller/adminController');
-const passport = require('passport');
+const auth = require('../middleware/auth');
 
 const router = express.Router();
 
+router.get('/getdata', auth, getAdmin);
+
 router.post('/login', addLogin);
+router.get('/logout', adminLogOut);
 router.post('/addAdmin', addAdmin);
 
 router.post('/addFaculty', addFaculty);

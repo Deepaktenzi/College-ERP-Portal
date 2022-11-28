@@ -2,6 +2,7 @@ import react, { useState, useEffect } from 'react';
 import AdminHome from '../../Components/AdminHome';
 import axios from 'axios';
 import { MagnifyingGlass } from 'react-loader-spinner';
+import AdminNavbar from '../../Components/AdminNavbar';
 const AdminGetAllStudent = () => {
   const [department, setDepartment] = useState('');
   const [year, setYear] = useState('');
@@ -63,7 +64,7 @@ const AdminGetAllStudent = () => {
 
   return (
     <>
-      <AdminHome />
+      <AdminNavbar />
 
       <div className="container mt-5">
         <div className="row">
@@ -95,7 +96,7 @@ const AdminGetAllStudent = () => {
                 onChange={(e) => setYear(e.target.value)}
               />
 
-              <div class="row justify-content-center">
+              <div className="row justify-content-center">
                 {isLoading && <MagnifyingGlass />}
               </div>
 

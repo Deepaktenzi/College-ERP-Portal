@@ -18,6 +18,7 @@ module.exports = {
       if (adminExist) {
         res.status(400).json({ message: 'Email Already Exixt' });
       } else {
+        const avatar = gravatar.url(email, { s: '200', r: 'pg', d: 'mm' });
         var date = new Date();
         const joiningYear = date.getFullYear();
 
@@ -57,6 +58,7 @@ module.exports = {
           registrationNumber,
           joiningYear,
           department,
+          avatar,
         });
         await newAdmin.save();
         res
@@ -65,6 +67,23 @@ module.exports = {
       }
     }
   },
+
+  // Get Admin
+
+  getAdmin: async (req, res) => {
+    res.send(req.rootUser);
+    // const { registrationNumber } = req.body;
+
+    // const admin = await Admin.findOne({ registrationNumber });
+
+    // res.status(200).json({ data: admin });
+  },
+
+  adminLogOut: async (req, res) => {
+    res.clearCookie('JwtAdm', { path: '/adminlogin' });
+    res.status(200).send('Admin Logout');
+  },
+
   // Admin Login
   addLogin: async (req, res) => {
     try {
@@ -78,7 +97,6 @@ module.exports = {
 
       const isCorrect = await bcrypt.compare(password, admin.password);
 
-      console.log(admin);
       if (!isCorrect) {
         res.status(404).json({ error: 'Invalid Credentials' });
       }
@@ -91,14 +109,15 @@ module.exports = {
         registrationNumber: admin.registrationNumber,
         joiningYear: admin.joiningYear,
         department: admin.department,
+        role: 'admin',
       };
       const token = jwt.sign(payload, process.env.SECRET_KEY);
-      res.status(200).json({ token: token });
 
       res.cookie('JwtAdm', token, {
-        expires: new Date(Date.now() + 60000),
+        expires: new Date(Date.now() + 1260000),
         httpOnly: true,
       });
+      res.status(200).json({ sucess: true });
     } catch (err) {
       console.log('Error in admin login', err.message);
     }
