@@ -1,24 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Cookies from 'universal-cookie';
+import { useNavigate, Link } from 'react-router-dom';
 import Axios from 'axios';
 
-function AdminNavbar() {
+const FacultyNavbar = () => {
   const navigate = useNavigate();
   const [data, setData] = useState({});
 
-  const callhomePage = async () => {
-    const admin = await Axios.get('/api/admin/getdata')
+  const callFacHomePage = async () => {
+    const faculty = await Axios.get('/api/faculty/getdata')
       .then((res) => setData(res.data))
       .catch((err) => {
-        navigate('/adminlogin');
+        navigate('/');
         console.log(err);
       });
   };
 
   useEffect(() => {
-    callhomePage();
+    callFacHomePage();
   }, []);
 
   return (
@@ -41,57 +39,36 @@ function AdminNavbar() {
             <ul className="navbar-nav">
               <li className="nav-item active">
                 <button type="button" className="btn">
-                  <Link to="/admin">
+                  <Link to="/faculty">
                     <li>{data.name}</li>
                   </Link>
                 </button>
               </li>
               <li className="nav-item">
                 <button type="button" className="btn">
-                  <Link to="/admin/addFaculty">
-                    <li>ADD FACULTY</li>
+                  <Link to="/faculty/updateProfile">
+                    <li>Update Profile</li>
                   </Link>
                 </button>
               </li>
               <li className="nav-item">
                 <button type="button" className="btn">
                   <Link to="/admin/addStudent">
-                    <li>ADD STUDENT</li>
+                    <li>Mark Attendance</li>
                   </Link>
                 </button>
               </li>
               <li className="nav-item">
                 <button type="button" className="btn">
                   <Link to="/admin/addSubject">
-                    <li>ADD SUBJECT</li>
+                    <li>Upload Marks</li>
                   </Link>
                 </button>
               </li>
               <li className="nav-item">
                 <button type="button" className="btn">
                   <Link to="/admin/addAdmin">
-                    <li>ADD ADMIN</li>
-                  </Link>
-                </button>
-              </li>
-              <li className="nav-item">
-                <button type="button" className="btn">
-                  <Link to="/admin/allFaculties">
-                    <li>OUR FACULTIES</li>
-                  </Link>
-                </button>
-              </li>
-              <li className="nav-item">
-                <button type="button" className="btn">
-                  <Link to="/admin/allStudents">
-                    <li>OUR STUDENTS</li>
-                  </Link>
-                </button>
-              </li>
-              <li className="nav-item">
-                <button type="button" className="btn">
-                  <Link to="/admin/allSubject">
-                    <li>SUBJECTS</li>
+                    <li>Update Password</li>
                   </Link>
                 </button>
               </li>
@@ -99,7 +76,7 @@ function AdminNavbar() {
           </div>
           <div>
             <button style={{ listStyle: 'None' }} type="button" className="btn">
-              <Link to="/admin/logout">
+              <Link to="/faculty/logout">
                 <li>LogOut</li>
               </Link>
             </button>
@@ -108,6 +85,6 @@ function AdminNavbar() {
       </div>
     </>
   );
-}
+};
 
-export default AdminNavbar;
+export default FacultyNavbar;

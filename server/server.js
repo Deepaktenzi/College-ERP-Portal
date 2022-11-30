@@ -12,9 +12,9 @@ app.use(express.json());
 dotenv.config({ path: './config/config.env' });
 app.use(cookieParser());
 app.use(cors({ origin: true, credentials: true }));
-
 app.use('/api/admin', adminRoutes);
 app.use('/api/faculty', facultyRoutes);
+
 // Mongoose Connect//
 mongoose
   .connect(

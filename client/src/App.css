@@ -4,6 +4,9 @@
   box-sizing: border-box;
 }
 
+button > a {
+  text-decoration: none;
+}
 #main-div {
   border: 2px solid red;
   display: flex;

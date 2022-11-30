@@ -20,6 +20,7 @@ module.exports = {
         }
         const payload = {
           id: faculty._id,
+          role: 'faculty',
           name: faculty.name,
           email: faculty.email,
           avatar: faculty.avatar,
@@ -34,7 +35,7 @@ module.exports = {
         };
         const token = await jwt.sign(payload, process.env.SECRET_KEY);
 
-        res.cookie('JwtFac', token, {
+        res.cookie('JwtAdm', token, {
           expires: new Date(Date.now() + 1260000),
           httpOnly: true,
         });
@@ -44,5 +45,14 @@ module.exports = {
     } catch (error) {
       console.log('Error in faculty page', error.message);
     }
+  },
+
+  getFaculty: async (req, res) => {
+    res.send(req.rootUser);
+  },
+
+  logout: async (req, res) => {
+    res.clearCookie('JwtAdm', { path: '/' });
+    res.status(200).send('Faculty Logout');
   },
 };
