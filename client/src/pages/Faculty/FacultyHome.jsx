@@ -22,7 +22,7 @@ const FacultyHome = () => {
 
   return (
     <>
-      <FacultyNavbar />
+      <FacultyNavbar data={data} />
       {data ? (
         <div className="container">
           <div className="row mt-5">

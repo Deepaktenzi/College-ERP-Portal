@@ -8,16 +8,15 @@ function AdminNavbar() {
   const navigate = useNavigate();
   const [data, setData] = useState({});
 
-  const callhomePage = async () => {
-    const admin = await Axios.get('/api/admin/getdata')
-      .then((res) => setData(res.data))
-      .catch((err) => {
-        navigate('/adminlogin');
-        console.log(err);
-      });
-  };
-
   useEffect(() => {
+    const callhomePage = async () => {
+      const admin = await Axios.get('/api/admin/getdata')
+        .then((res) => setData(res.data))
+        .catch((err) => {
+          navigate('/adminlogin');
+          console.log(err);
+        });
+    };
     callhomePage();
   }, []);
 

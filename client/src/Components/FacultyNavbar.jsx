@@ -2,22 +2,22 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import Axios from 'axios';
 
-const FacultyNavbar = () => {
+const FacultyNavbar = (props) => {
   const navigate = useNavigate();
   const [data, setData] = useState({});
 
-  const callFacHomePage = async () => {
-    const faculty = await Axios.get('/api/faculty/getdata')
-      .then((res) => setData(res.data))
-      .catch((err) => {
-        navigate('/');
-        console.log(err);
-      });
-  };
+  // const callFacHomePage = async () => {
+  //   const faculty = await Axios.get('/api/faculty/getdata')
+  //     .then((res) => setData(res.data))
+  //     .catch((err) => {
+  //       navigate('/');
+  //       console.log(err);
+  //     });
+  // };
 
-  useEffect(() => {
-    callFacHomePage();
-  }, []);
+  // useEffect(() => {
+  //   callFacHomePage();
+  // }, []);
 
   return (
     <>
@@ -40,7 +40,7 @@ const FacultyNavbar = () => {
               <li className="nav-item active">
                 <button type="button" className="btn">
                   <Link to="/faculty">
-                    <li>{data.name}</li>
+                    <li>{props.data.name}</li>
                   </Link>
                 </button>
               </li>
