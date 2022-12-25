@@ -2,7 +2,8 @@ const express = require('express');
 const Faculty = require('../models/faculty');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-
+var fs = require('fs');
+const path = require('path');
 module.exports = {
   facultylogin: async (req, res) => {
     try {
@@ -49,6 +50,30 @@ module.exports = {
 
   getFaculty: async (req, res) => {
     res.send(req.rootUser);
+  },
+
+  updateFaculty: async (req, res, next) => {
+    const { email, avatar, gender, contactno, aadhar } = req.body;
+
+    const faculty = await Faculty.findOne({ email });
+
+    if (gender) {
+      faculty.gender = gender;
+      await faculty.save();
+    }
+    if (contactno) {
+      faculty.facultyMobileNumber = contactno;
+      await faculty.save();
+    }
+    if (aadhar) {
+      faculty.aadharCard = aadhar;
+      await faculty.save();
+    }
+    faculty.avatar = req.file.filename;
+    await faculty.save();
+    //console.log(req.file);
+    console.log(avatar);
+    res.status(200).json({ message: 'updated' });
   },
 
   logout: async (req, res) => {

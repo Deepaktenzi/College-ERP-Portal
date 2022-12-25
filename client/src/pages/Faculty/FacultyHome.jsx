@@ -2,14 +2,17 @@ import React, { useState, useEffect } from 'react';
 import FacultyNavbar from '../../Components/FacultyNavbar';
 import { Link, useNavigate } from 'react-router-dom';
 import Axios from 'axios';
-
 const FacultyHome = () => {
   const navigate = useNavigate();
   const [data, setData] = useState({});
+  const [imagePath, setImagePath] = useState('');
 
   const callFacHomePage = async () => {
     const faculty = await Axios.get('/api/faculty/getdata')
-      .then((res) => setData(res.data))
+      .then((res) => {
+        setData(res.data);
+        setImagePath('http://localhost:3000/public/uploads/' + data.avatar);
+      })
       .catch((err) => {
         navigate('/');
         console.log(err);
@@ -18,7 +21,7 @@ const FacultyHome = () => {
 
   useEffect(() => {
     callFacHomePage();
-  }, []);
+  }, [imagePath]);
 
   return (
     <>
@@ -33,9 +36,10 @@ const FacultyHome = () => {
                   <div className="card" style={{ width: '18rem' }}>
                     <img
                       className="card-img-top"
-                      src={data.avatar}
-                      alt="Card image cap"
+                      src={imagePath}
+                      alt="Card Img"
                     />
+
                     <div className="card-body">
                       <h5 className="card-title">{data.name}</h5>
                       <h5 className="card-title">{data.registrationNumber}</h5>
@@ -82,7 +86,9 @@ const FacultyHome = () => {
                       <tr>
                         <td>Contact Number</td>
                         <td>
-                          {data.contactNumber ? data.contactNumber : 'NA'}
+                          {data.facultyMobileNumber
+                            ? data.facultyMobileNumber
+                            : 'NA'}
                         </td>
                       </tr>
                     </tbody>

@@ -1,24 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import Axios from 'axios';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const FacultyNavbar = (props) => {
-  const navigate = useNavigate();
-  const [data, setData] = useState({});
-
-  // const callFacHomePage = async () => {
-  //   const faculty = await Axios.get('/api/faculty/getdata')
-  //     .then((res) => setData(res.data))
-  //     .catch((err) => {
-  //       navigate('/');
-  //       console.log(err);
-  //     });
-  // };
-
-  // useEffect(() => {
-  //   callFacHomePage();
-  // }, []);
-
   return (
     <>
       <div className="container-fluid">
