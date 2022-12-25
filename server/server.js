@@ -9,12 +9,13 @@ const cookieParser = require('cookie-parser');
 const auth = require('./middleware/auth');
 const app = express();
 app.use(express.json());
+
 dotenv.config({ path: './config/config.env' });
 app.use(cookieParser());
 app.use(cors({ origin: true, credentials: true }));
 app.use('/api/admin', adminRoutes);
 app.use('/api/faculty', facultyRoutes);
-
+app.use('/public', express.static('public'));
 // Mongoose Connect//
 mongoose
   .connect(
