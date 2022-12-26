@@ -299,7 +299,9 @@ module.exports = {
         }
         await newStudent.save();
 
-        res.status(200).json({ result: newStudent });
+        res
+          .status(200)
+          .json({ result: newStudent, message: 'New Student Created' });
       }
     } catch (err) {
       res
