@@ -23,8 +23,8 @@ function AdminNavbar() {
   return (
     <>
       <div className="container-fluid">
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <h4 className="navbar-brand mt-1">SRM</h4>
+        <nav className="navbar navbar-expand-lg navbar-light w-100 bg-black text-bg-light">
+          <h4 className="navbar-brand mt-1 ml-3 text-danger ">SRM</h4>
           <button
             className="navbar-toggler"
             type="button"

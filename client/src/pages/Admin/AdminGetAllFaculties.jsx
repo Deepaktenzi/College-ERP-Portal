@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import AdminHome from '../../Components/AdminHome';
+
 import { MagnifyingGlass } from 'react-loader-spinner';
 import axios from 'axios';
+import AdminNavbar from '../../Components/AdminNavbar';
 function AdminGetAllFaculties() {
   const [isLoading, setIsLoading] = useState(false);
   const [department, setDepartment] = useState('');
@@ -27,7 +29,7 @@ function AdminGetAllFaculties() {
 
   return (
     <>
-      <AdminHome />
+      <AdminNavbar />
       <div className="container mt-5">
         <div className="row">
           <div className="col-sm-4">

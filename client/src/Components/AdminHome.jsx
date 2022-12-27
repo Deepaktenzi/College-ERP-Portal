@@ -34,11 +34,11 @@ function AdminHome() {
             <div className="row">
               <div className="col-md-5">
                 <div className="card" style={{ width: '18rem' }}>
-                  <img
+                  {/* <img
                     className="card-img-top"
                     src={data.avatar}
                     alt="Card image cap"
-                  />
+                  /> */}
                   <div className="card-body">
                     <h5 className="card-title">{data.name}</h5>
                     <h5 className="card-title">{data.registrationNumber}</h5>

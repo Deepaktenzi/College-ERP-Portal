@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { MagnifyingGlass } from 'react-loader-spinner';
 import AdminHome from '../../Components/AdminHome';
+import AdminNavbar from '../../Components/AdminNavbar';
 
 export default function AdminGetAllSubject() {
   const [isLoading, setIsLoading] = useState(false);
@@ -34,7 +35,7 @@ export default function AdminGetAllSubject() {
 
   return (
     <>
-      <AdminHome />
+      <AdminNavbar />
       <div className="container mt-5">
         <div className="row">
           <div className="col-sm-4">

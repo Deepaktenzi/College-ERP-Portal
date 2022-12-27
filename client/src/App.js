@@ -12,7 +12,7 @@ import FacultyStudentLoginPage from './pages/FacultyStudentLoginPage';
 import AdminLogin from './pages/AdminLogin';
 import { AdminLogout } from './pages/Admin/AdminLogout';
 import FacultyHome from './pages/Faculty/FacultyHome';
-import { FacultyUpdateProfile } from './pages/Faculty/FacultyUpdateProfile';
+import FacultyUpdateProfile from './pages/Faculty/FacultyUpdateProfile';
 import { FacultyLogout } from './pages/Faculty/FacultyLogout';
 
 function App() {

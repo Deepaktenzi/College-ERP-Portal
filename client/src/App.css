@@ -58,3 +58,43 @@ button > a {
     transform: rotate(360deg);
   }
 }
+
+.addStu_main {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+.form-group {
+  margin-top: 10px;
+}
+
+.container-fluid {
+  padding: 0 !important;
+}
+
+.navbar a {
+  color: white !important;
+}
+li.nav-item .btn {
+  transition: border 0.5s;
+}
+
+li.nav-item {
+  margin: 0px 10px;
+}
+
+li.nav-item .btn:hover {
+  border: 1px solid red;
+}
+
+.navbar-brand {
+  margin-left: 25px;
+  transition: transform 1s;
+}
+
+.navbar-brand:hover {
+  transform: rotate(360deg);
+}
