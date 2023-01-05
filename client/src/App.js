@@ -14,7 +14,9 @@ import { AdminLogout } from './pages/Admin/AdminLogout';
 import FacultyHome from './pages/Faculty/FacultyHome';
 import FacultyUpdateProfile from './pages/Faculty/FacultyUpdateProfile';
 import { FacultyLogout } from './pages/Faculty/FacultyLogout';
-
+import StudentHome from './pages/Student/StudentHome';
+import MarkAttendance from './pages/Faculty/MarkAttendance';
+import StudentAttendance from './pages/Student/StudentAttendance';
 function App() {
   return (
     <>
@@ -35,7 +37,16 @@ function App() {
         <Route path="/faculty/">
           <Route index element={<FacultyHome />} />
           <Route path="updateProfile" element={<FacultyUpdateProfile />} />
+          <Route path="markAttendance" element={<MarkAttendance />} />
+          <Route path="uploadMarks" element={<MarkAttendance />} />
+
           <Route path="logout" element={<FacultyLogout />} />
+        </Route>
+        <Route path="/student/">
+          <Route index element={<StudentHome />} />
+          <Route path="checkAttendance" element={<StudentAttendance />} />
+          {/* <Route path="updateProfile" element={<StudentUpdateProfile />} />
+          <Route path="logout" element={<FacultyLogout />} /> */}
         </Route>
       </Routes>
     </>

@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const Admin = require('../models/admin');
 const Faculty = require('../models/faculty');
+const Student = require('../models/student');
 const auth = async (req, res, next) => {
   try {
     const token = req.cookies.JwtAdm;
@@ -11,6 +12,8 @@ const auth = async (req, res, next) => {
       var rootUser = await Admin.findOne({ _id: verifyToken.id });
     } else if (verifyToken.role === 'faculty') {
       var rootUser = await Faculty.findOne({ _id: verifyToken.id });
+    } else if (verifyToken.role === 'Student') {
+      var rootUser = await Student.findOne({ _id: verifyToken.id });
     }
 
     if (!rootUser) {

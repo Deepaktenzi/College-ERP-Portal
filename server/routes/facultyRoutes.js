@@ -4,6 +4,8 @@ const {
   getFaculty,
   logout,
   updateFaculty,
+  allStudents,
+  markAttendance,
 } = require('../controller/facultyController');
 const multer = require('multer');
 var storage = multer.diskStorage({
@@ -24,6 +26,9 @@ const router = express.Router();
 router.post('/login', facultylogin);
 router.post('/updateFaculty', upload.single('avatar'), updateFaculty);
 router.get('/getdata', auth, getFaculty);
+router.get('/allStudents', allStudents);
+router.post('/markAttendance', markAttendance);
+
 router.get('/logout', logout);
 
 module.exports = router;

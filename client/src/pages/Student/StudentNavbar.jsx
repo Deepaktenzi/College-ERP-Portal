@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-const FacultyNavbar = (props) => {
+const StudentNavbar = (props) => {
   return (
     <>
       <div className="container-fluid">
@@ -22,7 +21,7 @@ const FacultyNavbar = (props) => {
             <ul className="navbar-nav">
               <li className="nav-item active">
                 <button type="button" className="btn">
-                  <Link to="/faculty">
+                  <Link to="/student">
                     <li>{props.data.name}</li>
                   </Link>
                 </button>
@@ -36,21 +35,21 @@ const FacultyNavbar = (props) => {
               </li>
               <li className="nav-item">
                 <button type="button" className="btn">
-                  <Link to="/faculty/markAttendance">
-                    <li>Mark Attendance</li>
+                  <Link to="/student/checkAttendance">
+                    <li>Check Attendance</li>
                   </Link>
                 </button>
               </li>
               <li className="nav-item">
                 <button type="button" className="btn">
-                  <Link to="/faculty/uploadMarks">
+                  <Link to="/student/uploadMarks">
                     <li>Upload Marks</li>
                   </Link>
                 </button>
               </li>
               <li className="nav-item">
                 <button type="button" className="btn">
-                  <Link to="/admin/addAdmin">
+                  <Link to="/student/addAdmin">
                     <li>Update Password</li>
                   </Link>
                 </button>
@@ -70,4 +69,4 @@ const FacultyNavbar = (props) => {
   );
 };
 
-export default FacultyNavbar;
+export default StudentNavbar;

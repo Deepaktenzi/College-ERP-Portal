@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const adminRoutes = require('./routes/adminRoutes');
 const facultyRoutes = require('./routes/facultyRoutes');
+const studentRoutes = require('./routes/studentRoutes');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const passport = require('passport');
@@ -15,6 +16,7 @@ app.use(cookieParser());
 app.use(cors({ origin: true, credentials: true }));
 app.use('/api/admin', adminRoutes);
 app.use('/api/faculty', facultyRoutes);
+app.use('/api/student', studentRoutes);
 app.use('/public', express.static('public'));
 // Mongoose Connect//
 mongoose
