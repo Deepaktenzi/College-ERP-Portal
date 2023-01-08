@@ -44,7 +44,7 @@ function AdminLogin() {
 
   return (
     <>
-      <div className="container-fluid" id="main-div">
+      <div className="container-fluid vh-100" id="main-div">
         <div className="login_main">
           <div className="border-2 border border-danger p-2">
             <h3>Admin Login</h3>
